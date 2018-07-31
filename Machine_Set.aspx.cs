@@ -13,7 +13,7 @@ namespace Toollife
 {
     public partial class Machine_Set : System.Web.UI.Page
     {
-        String M_ID, PS_CODE, PKG_GROUP_SK, MODEL, M_STATUS;
+        String M_ID, PS_CODE, PKG_GROUP_SK, MODEL;
         DBA con = new DBA();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +21,6 @@ namespace Toollife
             if (!Page.IsPostBack)
             {
                 pslistSelect();
-                macStsSelect();
                 pkgGpSelect();
             }
             addButton.Visible = true;
@@ -30,7 +29,7 @@ namespace Toollife
         }
         protected void getMacINFO()
         {
-            String q = "SELECT MAC.M_ID,MAC.PS_CODE,P.PS_DESC,MAC.PKG_GROUP_SK,PK.PKG_GROUP_DESC,MAC.MODEL,MAC.M_STATUS,MS.M_DESC FROM A_NEW_MACHINE MAC,A_NEW_PROCESS_STEP P,A_NEW_PKG_GROUP_DESC PK,A_NEW_MACHINE_STATUS_CODE MS WHERE MAC.PS_CODE=P.PS_CODE AND MAC.PKG_GROUP_SK = PK.PKG_GROUP_SK AND MAC.M_STATUS = MS.M_STATUS ORDER BY M_ID ASC";
+            String q = "SELECT MAC.M_ID,MAC.PS_CODE,P.PS_DESC,MAC.PKG_GROUP_SK,PK.PKG_GROUP_DESC,MAC.MODEL FROM A_NEW_MACHINE MAC,A_NEW_PROCESS_STEP P,A_NEW_PKG_GROUP_DESC PK  WHERE MAC.PS_CODE=P.PS_CODE AND MAC.PKG_GROUP_SK = PK.PKG_GROUP_SK ORDER BY M_ID ASC";
             DataSet ds = con.getData(q);
             if(ds.Tables[0].Rows.Count > 0){
             macData.DataSource = ds;
@@ -60,19 +59,6 @@ namespace Toollife
         }
 
 
-        protected void macStsSelect()
-        {
-            String q = "SELECT M_STATUS, M_DESC FROM A_NEW_MACHINE_STATUS_CODE";
-            DataSet ds = con.getData(q);
-            ds.Tables[0].Rows.InsertAt(ds.Tables[0].NewRow(), 0);
-           macSts.DataSource = ds;
-           macSts.DataMember = ds.Tables[0].TableName;
-           macSts.DataTextField = ds.Tables[0].Columns["M_DESC"].ColumnName;
-           macSts.DataValueField = ds.Tables[0].Columns["M_STATUS"].ColumnName;
-            macSts.DataBind();
-
-        }
-
         protected void pkgGpSelect()
         {
             String q = "SELECT PKG_GROUP_SK,PKG_GROUP_DESC FROM A_NEW_PKG_GROUP_DESC";
@@ -91,7 +77,6 @@ namespace Toollife
             macData.PageIndex = e.NewPageIndex;
             getMacINFO();
             pslistSelect();
-            macStsSelect();
             pkgGpSelect();
             macNO.Text = String.Empty;
             mod.Text = String.Empty;
@@ -114,9 +99,8 @@ namespace Toollife
             this.PS_CODE = selectPS.SelectedItem.Value;
             this.PKG_GROUP_SK = pkgGp.SelectedItem.Value;
             this.MODEL = mod.Text;
-            this.M_STATUS = macSts.SelectedItem.Value;
 
-            String q = "INSERT INTO A_NEW_MACHINE(M_ID, PS_CODE, PKG_GROUP_SK,MODEL, M_STATUS) VALUES ('" + M_ID + "','" + PS_CODE + "'," + PKG_GROUP_SK + ",'" + MODEL + "','" + M_STATUS + "')";
+            String q = "INSERT INTO A_NEW_MACHINE(M_ID, PS_CODE, PKG_GROUP_SK,MODEL) VALUES ('" + M_ID + "','" + PS_CODE + "'," + PKG_GROUP_SK + ",'" + MODEL + "')";
  
             String mes = con.querytoDB(q);
             getMacINFO();
@@ -140,8 +124,6 @@ namespace Toollife
                 pkgGp.SelectedValue = macData.DataKeys[index].Values["PKG_GROUP_SK"].ToString();
                 mod.Text = macData.DataKeys[index].Values["MODEL"].ToString();
 
-                macSts.SelectedValue = macData.DataKeys[index].Values["M_STATUS"].ToString();
-
             }
         }
         protected void edit_Click(object sender, EventArgs e)
@@ -151,17 +133,15 @@ namespace Toollife
             this.PS_CODE = selectPS.SelectedItem.Value;
             this.PKG_GROUP_SK = pkgGp.SelectedItem.Value;
             this.MODEL = mod.Text;
-            this.M_STATUS = macSts.SelectedItem.Value;
     
 
-            String q = "UPDATE  A_NEW_MACHINE SET PS_CODE='"+PS_CODE+"',PKG_GROUP_SK=" + PKG_GROUP_SK + ",MODEL='" + MODEL + "',M_STATUS='" + M_STATUS + "'WHERE M_ID='" + M_ID + "'";
+            String q = "UPDATE  A_NEW_MACHINE SET PS_CODE='"+PS_CODE+"',PKG_GROUP_SK=" + PKG_GROUP_SK + ",MODEL='" + MODEL + "' WHERE M_ID='" + M_ID + "'";
 
             String mes = con.querytoDB(q);
            getMacINFO();
            macNO.Text = String.Empty;
            mod.Text = String.Empty;
            pslistSelect();
-           macStsSelect();
            pkgGpSelect();
             this.MessageBox(mes);
         }

@@ -11,7 +11,7 @@
             <asp:GridView ID="qcdata" runat="server" AllowPaging="True" OnPageIndexChanging="qcdata_PageIndexChanging"
                 AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None"
                 BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="qcdata_RowCommand"
-                DataKeyNames="PART_NO,QC_NO,QC_DESC">
+                DataKeyNames="PART_NO,QC_NO,QC_DESC" Font-Bold="True">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="PART_NO" HeaderText="Part NO." />
@@ -39,7 +39,7 @@
         <div id="add">
             
             <div class="row">
-                <div class="col-25">
+                <div class="col-25"><b>
                     
                         Part NO.
                 </div>
@@ -70,7 +70,7 @@
               <asp:TextBox ID="qcdescin" runat="server" ></asp:TextBox>
                 </div>
             </div>
-            <br />
+            <br /></b>
             <div class="row">
                 <asp:Button ID="editButton" runat="server"  Text="SAVE" Width="180px" 
                     onclick="edit_Click" />

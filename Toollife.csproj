@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,6 +14,11 @@
     <RootNamespace>Toollife</RootNamespace>
     <AssemblyName>Toollife</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +40,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -51,17 +60,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Adjust.aspx" />
     <Content Include="Alert_Mail.aspx" />
+    <Content Include="conversion.aspx" />
+    <Content Include="Current_Mac.aspx" />
+    <Content Include="employee.aspx" />
+    <Content Include="extentform.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="Machine_Set.aspx" />
     <Content Include="MCxTS.aspx" />
+    <Content Include="newform.aspx" />
+    <Content Include="Part_Status.aspx" />
     <Content Include="PKG_GUP_CDE.aspx" />
     <Content Include="QC_CRI.aspx" />
+    <Content Include="Report.aspx" />
     <Content Include="scripts\JScript1.js" />
     <Content Include="style\StyleSheet1.css" />
     <Content Include="TOOL_SET.aspx" />
     <Content Include="Tool_Set_Part.aspx" />
-    <Content Include="UntPrStp.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -71,6 +90,13 @@
     <Content Include="Part_Set.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adjust.aspx.cs">
+      <DependentUpon>Adjust.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adjust.aspx.designer.cs">
+      <DependentUpon>Adjust.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alert_Mail.aspx.cs">
       <DependentUpon>Alert_Mail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -78,7 +104,42 @@
     <Compile Include="Alert_Mail.aspx.designer.cs">
       <DependentUpon>Alert_Mail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="conversion.aspx.cs">
+      <DependentUpon>conversion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="conversion.aspx.designer.cs">
+      <DependentUpon>conversion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Current_Mac.aspx.cs">
+      <DependentUpon>Current_Mac.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Current_Mac.aspx.designer.cs">
+      <DependentUpon>Current_Mac.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DBA.cs" />
+    <Compile Include="employee.aspx.cs">
+      <DependentUpon>employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employee.aspx.designer.cs">
+      <DependentUpon>employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="extentform.aspx.cs">
+      <DependentUpon>extentform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="extentform.aspx.designer.cs">
+      <DependentUpon>extentform.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Machine_Set.aspx.cs">
       <DependentUpon>Machine_Set.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -92,6 +153,20 @@
     </Compile>
     <Compile Include="MCxTS.aspx.designer.cs">
       <DependentUpon>MCxTS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="newform.aspx.cs">
+      <DependentUpon>newform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="newform.aspx.designer.cs">
+      <DependentUpon>newform.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Part_Status.aspx.cs">
+      <DependentUpon>Part_Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Part_Status.aspx.designer.cs">
+      <DependentUpon>Part_Status.aspx</DependentUpon>
     </Compile>
     <Compile Include="PKG_GUP_CDE.aspx.cs">
       <DependentUpon>PKG_GUP_CDE.aspx</DependentUpon>
@@ -107,6 +182,13 @@
     </Compile>
     <Compile Include="QC_CRI.aspx.designer.cs">
       <DependentUpon>QC_CRI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="Setting.Master.cs">
       <DependentUpon>Setting.Master</DependentUpon>
@@ -136,19 +218,17 @@
     <Compile Include="Tool_Set_Part.aspx.designer.cs">
       <DependentUpon>Tool_Set_Part.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UntPrStp.aspx.cs">
-      <DependentUpon>UntPrStp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UntPrStp.aspx.designer.cs">
-      <DependentUpon>UntPrStp.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Setting.Master" />
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

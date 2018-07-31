@@ -13,6 +13,7 @@ namespace Toollife
 {
     public partial class Alert_Mail : System.Web.UI.Page
     {
+        static String oldPSC, oldMail, oldNT;
         String PS_CODE, Email;
         DBA con = new DBA();
         protected void Page_Load(object sender, EventArgs e)
@@ -21,15 +22,15 @@ namespace Toollife
             if (!Page.IsPostBack)
             {
                 pslistSelect();
-                
+                addButton.Visible = true;
+                editButton.Visible = false;
             }
             
-            addButton.Visible = true;
-            editButton.Visible = false;
+            
         }
         protected void getEmail()
         {
-            String q = "SELECT am.PS_CODE,ps.PS_DESC,am.PS_SUPPT_EMAIL FROM A_NEW_ALRET_MAIL am LEFT JOIN A_NEW_PROCESS_STEP ps ON am.PS_CODE=ps.PS_CODE ";
+            String q = "SELECT am.PS_CODE,ps.PS_DESC,am.PS_SUPPT_EMAIL,am.NT_ACC FROM A_NEW_ALRET_MAIL am LEFT JOIN A_NEW_PROCESS_STEP ps ON am.PS_CODE=ps.PS_CODE ";
 
             DataSet ds = con.getData(q);
 
@@ -80,14 +81,15 @@ namespace Toollife
             this.PS_CODE = selectPS.SelectedItem.Value;
 
             this.Email = emailIN.Text;
-            
+            String ntacc = ntaccIn.Text;
 
-            String q = "INSERT INTO A_NEW_ALRET_MAIL(PS_CODE,PS_SUPPT_EMAIL) VALUES ('" + PS_CODE + "','" + Email + "')";
+            String q = "INSERT INTO A_NEW_ALRET_MAIL(PS_CODE,PS_SUPPT_EMAIL,NT_ACC) VALUES ('" + PS_CODE + "','" + Email + "','"+ntacc+"')";
 
             String mes = con.querytoDB(q);
             getEmail();
             selectPS.ClearSelection();
             emailIN.Text = String.Empty;
+            ntaccIn.Text = String.Empty;
             addButton.Visible = true;
             editButton.Visible = false;
             this.MessageBox(mes);
@@ -106,12 +108,14 @@ namespace Toollife
             {
                 addButton.Visible = false;
                 editButton.Visible = true;
+                ntaccIn.Enabled = false;
                 int index = Convert.ToInt32(e.CommandArgument);
                 emailIN.Text = alermail.DataKeys[index].Values["PS_SUPPT_EMAIL"].ToString();
                 selectPS.SelectedValue = alermail.DataKeys[index].Values["PS_CODE"].ToString();
-                TextBox1.Text = alermail.DataKeys[index].Values["PS_CODE"].ToString();
-                TextBox2.Text = alermail.DataKeys[index].Values["PS_SUPPT_EMAIL"].ToString();
-
+                oldPSC = alermail.DataKeys[index].Values["PS_CODE"].ToString();
+                oldMail = alermail.DataKeys[index].Values["PS_SUPPT_EMAIL"].ToString();
+                ntaccIn.Text = alermail.DataKeys[index].Values["NT_ACC"].ToString();
+                oldNT = alermail.DataKeys[index].Values["NT_ACC"].ToString(); 
             }
         }
 
@@ -119,10 +123,10 @@ namespace Toollife
         {
 
             this.PS_CODE = selectPS.SelectedValue;
-
+            String ntacc = ntaccIn.Text;
             this.Email = emailIN.Text;
 
-            String q = "UPDATE A_NEW_ALRET_MAIL SET PS_CODE='" + PS_CODE + "',PS_SUPPT_EMAIL='"+Email+"' WHERE PS_CODE='" + TextBox1.Text+"'AND PS_SUPPT_EMAIL='"+TextBox2.Text+"'"  ;
+            String q = "UPDATE A_NEW_ALRET_MAIL SET PS_CODE='" + PS_CODE + "',PS_SUPPT_EMAIL='"+Email+"', NT_ACC='"+ntacc+"' WHERE PS_CODE='" + oldPSC+"'AND PS_SUPPT_EMAIL='"+oldMail+"'and NT_ACC='"+oldNT+"'"  ;
 
             String mes = con.querytoDB(q);
             getEmail();
@@ -130,6 +134,8 @@ namespace Toollife
             emailIN.Text = String.Empty;
             addButton.Visible = true;
             editButton.Visible = false;
+            ntaccIn.Enabled = true;
+            ntaccIn.Text = String.Empty;
             this.MessageBox(mes);
         }
     }

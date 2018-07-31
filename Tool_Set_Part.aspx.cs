@@ -24,7 +24,6 @@ namespace Toollife
             if (!IsPostBack)
             {
                
-                getPartNO();
                 add.Visible = true;
                 edit.Visible = false;
 
@@ -73,7 +72,7 @@ namespace Toollife
         protected void getPartNO()
         {
 
-            String q = "SELECT PART_NO,PART_DESC FROM A_NEW_PART_SPEC ORDER BY PART_NO ASC";
+            String q = "SELECT PKG_CODE,PART_NO,PART_DESC FROM A_NEW_PART_SPEC where pkg_code = '"+pkgCoIN.Text+"'order by part_no";
 
             DataSet ds = con.getData(q);
 
@@ -112,21 +111,20 @@ namespace Toollife
         {
             if (e.CommandName == "Select")
             {
-
                 int index = Convert.ToInt32(e.CommandArgument);
 
                 tIDIN.Text = tsData.DataKeys[index].Values["TOOL_ID"].ToString();
                 Toolsk.Text = tsData.DataKeys[index].Values["TOOL_SK"].ToString();
                 pkgCoIN.Text = tsData.DataKeys[index].Values["PKG_CODE"].ToString();
 
+                getPartNO();
                 partNOSelected(Toolsk.Text);
-
             }
 
         }
         protected void partNOSelected(String tsKey)
         {
-            String q = "SELECT PART_NO  FROM A_NEW_TOOL_PART  WHERE TOOL_SK=" + tsKey + "  ORDER BY PART_NO ASC ";
+            String q = "SELECT PART_NO  FROM A_NEW_TOOL_PART  WHERE TOOL_SK='" + tsKey +"'";
             DataSet ds = con.getData(q);
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -268,12 +266,6 @@ namespace Toollife
             this.MessageBox(mes);
 
         }
-
-
-
-
-
-
 
     }
 }

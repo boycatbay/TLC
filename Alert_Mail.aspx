@@ -7,17 +7,18 @@
     <div class="container">
         <div align="center">
             <h2>
-                Alert E-MAIL </h2>
+                Employee E-mail</h2>
         </div>
         <div id="dataShow" align="center">
             <asp:GridView ID="alermail" runat="server" AllowPaging="True" OnPageIndexChanging="alermail_PageIndexChanging"
                 AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None"
                 BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="alermail_RowCommand"
-                DataKeyNames="PS_CODE,PS_DESC,PS_SUPPT_EMAIL">
+                DataKeyNames="PS_CODE,PS_DESC,PS_SUPPT_EMAIL,NT_ACC">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="PS_CODE" HeaderText="Process Step" />
                     <asp:BoundField DataField="PS_SUPPT_EMAIL" HeaderText="E-Mail" />
+                    <asp:BoundField DataField="NT_ACC" HeaderText="NT ACC" />
                     <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Edit" ShowHeader="True"
                         Text="Edit" />
                 </Columns>
@@ -41,23 +42,30 @@
             <form id="addpart">
             <div class="row">
                 <div class="col-25">
-                    <label for="partno">
-                        Process Step</label>
+                    <label for="partno"><b>
+                        Process Step</b></label>
                 </div>
                 <div class="col-75">
                     <asp:DropDownList ID="selectPS" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
-                    &nbsp;<asp:TextBox ID="TextBox1" runat="server" Visible="False"></asp:TextBox>
-                </div>
+                    &nbsp;</div>
             </div>
             <div class="row">
-                <div class="col-25">
-                    E-MAIL
+                <div class="col-25"><b>
+                    E-MAIL</b>
                 </div>
                 <div class="col-75">
-                    <asp:TextBox ID="emailIN" runat="server"></asp:TextBox>
-                    &nbsp;<asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
+                    <asp:TextBox ID="emailIN" runat="server"><b></b></asp:TextBox>
+                    &nbsp;</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-25"><b>
+                   NT ACC</b>
                 </div>
+                <div class="col-75">
+                    <asp:TextBox ID="ntaccIn" runat="server"><b></b></asp:TextBox>
+                    &nbsp;</div>
             </div>
             <br />
             <div class="row">

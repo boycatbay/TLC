@@ -9,11 +9,18 @@
             <h2>
                 Part Setting</h2>
         </div>
+        <div id="Div1" align="center">
+     <label for="area">PKG GROUP : </label>
+     <asp:DropDownList ID="pkgg" runat="server" width="20%" 
+            DataField="PKG_GROUP_DESC" AutoPostBack = "true" OnSelectedIndexChanged="pkgg_SelectedIndexChanged">
+        </asp:DropDownList> &nbsp;
+         
+     <br /><br />
         <div id="dataShow" align="center">
             <asp:GridView ID="partData" runat="server" AllowPaging="True" OnPageIndexChanging="partData_PageIndexChanging"
                 AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None"
                 BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="partData_RowCommand"
-                DataKeyNames="PART_NO">
+                DataKeyNames="PART_NO,PKG_GROUP_SK,PKG_CODE" Font-Bold="True">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="PART_NO" HeaderText="Part NO." SortExpression="PART_NO" />
@@ -21,6 +28,7 @@
                     <asp:BoundField DataField="QTY_USE" HeaderText="Quantity of Part" SortExpression="QTY_USE" />
                     <asp:BoundField DataField="ALERT_COUNT" HeaderText="Alert Limit" SortExpression="ALERT_COUNT" />
                     <asp:BoundField DataField="MAX_COUNT" HeaderText="Maximum Limit" SortExpression="MAX_COUNT" />
+                    <asp:BoundField DataField="PKG_CODE" HeaderText="PKG" SortExpression="PKG_CODE" />
                     <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Edit" ShowHeader="True"
                         Text="Edit" />
                 </Columns>
@@ -43,7 +51,7 @@
         <div id="add">
             <form id="addpart">
             <div class="row">
-                <div class="col-25">
+                <div class="col-25"><b>
                     <label for="partno">
                         Part Number</label>
                 </div>
@@ -87,6 +95,26 @@
                     &nbsp;<asp:TextBox ID="maxIN" runat="server"></asp:TextBox>
                 </div>
             </div>
+            <div class="row">
+                    <div class="col-25">
+                        <label for="partno">
+                            Package Group</label>
+                    </div>
+            <div class="col-75">
+                    <asp:DropDownList ID="selectPG" runat="server" OnSelectedIndexChanged="selectPG_SelectedIndexChanged"
+                            AutoPostBack="True">
+                    </asp:DropDownList>
+                    &nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                        Package Code
+                </div>
+                <div class="col-75">
+                    <asp:ListBox ID="selectPC" runat="server"></asp:ListBox>
+                        &nbsp;</div>
+                </div></b>
+
             <br />
             <div class="row">
                 <asp:Button ID="editButton" runat="server" OnClick="edit_Click" Text="SAVE" Width="180px" />

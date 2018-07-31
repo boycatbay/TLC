@@ -163,7 +163,7 @@ namespace Toollife
             for (int i = 0; i < selectPC.Items.Count; i++)
             {
                 toolsk = selectPC.Items[i].Value.ToString();
-                q = "INSERT INTO A_NEW_MACHINES_STATUS(M_ID,TOOL_SK) VALUES ('" + mid + "','" + toolsk + "')";
+                q = "INSERT INTO A_NEW_MACHINES_STATUS(M_ID,TOOL_SK,CURRENT_STATUS) VALUES ('" + mid + "','" + toolsk + "','001')";
 
                 mes = con.querytoDB(q);
                 this.MessageBox(mes);
@@ -260,7 +260,7 @@ namespace Toollife
                         
                     }
                 }
-                q = "INSERT INTO A_NEW_MACHINES_STATUS(M_ID,TOOL_SK) VALUES ('" + mid + "','" + toolsk + "')";
+                q = "INSERT INTO A_NEW_MACHINES_STATUS(M_ID,TOOL_SK,CURRENT_STATUS) VALUES ('" + mid + "','" + toolsk + "',)";
 
                 mes = con.querytoDB(q);
                 

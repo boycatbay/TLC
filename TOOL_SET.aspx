@@ -13,12 +13,14 @@
             <asp:GridView ID="tsData" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                 BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
                 CellPadding="3" GridLines="Vertical" OnPageIndexChanging="tsData_PageIndexChanging"
-                DataKeyNames="TOOL_SK,TOOL_ID,PKG_CODE,STATUS_FLAG,PKG_GROUP_SK" OnRowCommand="tsData_RowCommand">
+                
+                DataKeyNames="TOOL_SK,TOOL_ID,PKG_CODE,SUBSTRATEPART,STATUS_FLAG,PKG_GROUP_SK" 
+                OnRowCommand="tsData_RowCommand" Font-Bold="True">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="TOOL_ID" HeaderText="Tool ID" SortExpression="TOOL_ID" />
                     <asp:BoundField DataField="PKG_CODE" HeaderText="Package Code" SortExpression="PKG_CODE" />
-                    <asp:BoundField DataField="STATUS_FLAG" HeaderText="Status" SortExpression="STATUS_FLAG" />
+                    <asp:BoundField DataField="SUBSTRATEPART" HeaderText="Sub Strate Part" />
                     <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Edit" ShowHeader="True"
                         Text="Select" />
                 </Columns>
@@ -40,7 +42,7 @@
             <h2 align="center">
                 Add/Edit</h2>
             <div id="addPkgC" runat="server">
-                <div class="row">
+                <div class="row"><b>
                     <div class="col-25">
                         Tool ID
                     </div>
@@ -68,15 +70,14 @@
                         &nbsp;</div>
                 </div>
                 <br />
-                <div class="row" id="statusFF" runat="server">
+                 <div class="row">
                     <div class="col-25">
-                        STATUS
+                        Sub Strate
                     </div>
                     <div class="col-75">
-                        <asp:TextBox ID="statusF" runat="server"></asp:TextBox>
-                        &nbsp;<asp:TextBox Visible="false" ID="toolskin" runat="server"></asp:TextBox>
-                    </div>
-                </div>
+                        <asp:TextBox ID="substIn" runat="server"></asp:TextBox>
+                        &nbsp;</div>
+                </div></b>
             </div>
             <br />
             <div class="row" id="adEdBut" runat="server">

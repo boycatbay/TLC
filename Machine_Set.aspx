@@ -17,7 +17,7 @@
             AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" 
             BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" 
             onrowcommand="macData_RowCommand" 
-            DataKeyNames="M_ID,PS_CODE,PKG_GROUP_SK,M_STATUS,MODEL" 
+            DataKeyNames="M_ID,PS_CODE,PKG_GROUP_SK,MODEL" Font-Bold="True" 
              >
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
@@ -32,9 +32,7 @@
                 <asp:BoundField DataField="MODEL" HeaderText="Model" 
                     SortExpression="MODEL" />
                 
-                <asp:BoundField DataField="M_DESC" HeaderText="Machine Status" 
-                    SortExpression="M_DESC" />
-                
+              
                 <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Edit" 
                     ShowHeader="True" Text="Edit" />
                 
@@ -58,10 +56,10 @@
     <h3 align="center">Add/Edit</h3>
         <div id="add">
          <form id="addpart">
-            <div class="row">
+            <div class="row"><b>
                 <div class="col-25">
                      <label for="partno">Process Step</label>
-                </div>
+                </div></b>
                 <div class="col-75">
                     
           <asp:DropDownList ID="selectPS" runat="server" >
@@ -69,42 +67,33 @@
                     </asp:DropDownList>
 &nbsp;</div>
             </div>
-             <div class="row">
+             <div class="row"><b>
                 <div class="col-25">
                      <label for="desc">Machine NO.</label>
                 </div>
                 <div class="col-75">
                      <asp:TextBox ID="macNO" runat="server"></asp:TextBox>
 &nbsp;</div>
-            </div>
+            </div></b>
             <div class="row">
-                <div class="col-25">
+                <div class="col-25"><b>
                      <label for="qty">Package Group</label>
-                </div>
+                </div></b>
                 <div class="col-75">
                   
                     <asp:DropDownList ID="pkgGp" runat="server">
                     </asp:DropDownList>
 &nbsp;</div>
             </div>
-            <div class="row">
+            <div class="row"><b>
                 <div class="col-25">
                      <label for="alert">Model</label>
                 </div>
                 <div class="col-75">
                      &nbsp;<asp:TextBox ID="mod" runat="server" ></asp:TextBox>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                     <label for="max">Machine Status</label>
-                </div>
-                <div class="col-75">
-                     &nbsp;
-                    <asp:DropDownList ID="macSts" runat="server">
-                    </asp:DropDownList>
-                </div>
-            </div><br />
+            </div></b>
+            
             <div class="row">
                    <asp:Button ID="editButton" runat="server" onclick="edit_Click" 
                     Text="SAVE" Width="180px"  /> 

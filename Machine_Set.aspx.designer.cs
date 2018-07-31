@@ -58,15 +58,6 @@ namespace Toollife {
         protected global::System.Web.UI.WebControls.TextBox mod;
         
         /// <summary>
-        /// macSts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList macSts;
-        
-        /// <summary>
         /// editButton control.
         /// </summary>
         /// <remarks>

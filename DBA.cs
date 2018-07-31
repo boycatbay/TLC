@@ -49,7 +49,7 @@ namespace Toollife
             catch (OracleException e)
             {
                 mes = "Code: " + e.Code + "Message: " + e.Message;
-                 
+               
                 disconnect(con1);
                 return mes;
                 
@@ -58,7 +58,7 @@ namespace Toollife
             {
                 if (rv > 0)
                 {
-                    mes = "Successful Running with "+rv+" result(s)";
+                    mes = "Successful Running ";
                 }
                 else 
                 {
@@ -73,3 +73,4 @@ namespace Toollife
         }
     }
 }
+/* Coding By Boycatbay */

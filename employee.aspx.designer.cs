@@ -10,87 +10,105 @@
 namespace Toollife {
     
     
-    public partial class TOOL_SET {
+    public partial class employee {
         
         /// <summary>
-        /// tsData control.
+        /// employData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tsData;
+        protected global::System.Web.UI.WebControls.GridView employData;
         
         /// <summary>
-        /// addPkgC control.
+        /// bNoin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl addPkgC;
+        protected global::System.Web.UI.WebControls.TextBox bNoin;
         
         /// <summary>
-        /// tIDIN control.
+        /// ntIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tIDIN;
+        protected global::System.Web.UI.WebControls.TextBox ntIn;
         
         /// <summary>
-        /// selectPG control.
+        /// authSe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList selectPG;
+        protected global::System.Web.UI.WebControls.DropDownList authSe;
         
         /// <summary>
-        /// selectPC control.
+        /// process control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox selectPC;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl process;
         
         /// <summary>
-        /// substIn control.
+        /// psSel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox substIn;
+        protected global::System.Web.UI.WebControls.DropDownList psSel;
         
         /// <summary>
-        /// adEdBut control.
+        /// psSeltd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl adEdBut;
+        protected global::System.Web.UI.WebControls.ListBox psSeltd;
         
         /// <summary>
-        /// add control.
+        /// resetPS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add;
+        protected global::System.Web.UI.WebControls.Button resetPS;
         
         /// <summary>
-        /// edit control.
+        /// emailIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button edit;
+        protected global::System.Web.UI.WebControls.TextBox emailIn;
+        
+        /// <summary>
+        /// editButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button editButton;
+        
+        /// <summary>
+        /// addButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addButton;
     }
 }

@@ -49,7 +49,7 @@
                     BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
                     CellPadding="3" GridLines="Vertical"  
                     onpageindexchanging="gettsData_PageIndexChanging" 
-                DataKeyNames="TOOL_SK,TOOL_ID,PKG_CODE,PKG_GROUP_DESC" >
+                DataKeyNames="TOOL_SK,TOOL_ID,PKG_CODE,PKG_GROUP_DESC" Font-Bold="True" >
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:BoundField DataField="TOOL_SK" HeaderText="TOOL_SK"  
@@ -85,9 +85,9 @@
         <h3 align="center">
             Add/Edit</h3>
         <div class="row">
-            <div class="col-25">
+            <div class="col-25"><b>
                     Process Step
-            </div>
+            </div></b>
             <div class="col-75">
                 <asp:DropDownList ID="selectPS" runat="server" AutoPostBack="True" 
                     onselectedindexchanged="selectPS_SelectedIndexChanged">
@@ -96,9 +96,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-25">
+            <div class="col-25"><b>
                 Machine NO.
-            </div>
+            </div></b>
             <div class="col-75">
                 <asp:DropDownList ID="selectMac" runat="server" 
                    >
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-25">
+            <div class="col-25"><b>
                 Tool Set Contain
             
             </div>
@@ -115,7 +115,7 @@
                 <asp:ListBox ID="oldTS" runat="server" Visible="False"></asp:ListBox>
             
             </div>
-        </div>
+        </div></b>
         <br />
         <div class="row">
             <asp:Button ID="editButton" runat="server" Text="SAVE" Width="180px" 

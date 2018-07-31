@@ -126,8 +126,8 @@ namespace Toollife
             if(selectAct.SelectedValue.Equals("0"))
             {
                 this.PKG_GROUP_DESC = pkgGIn.Text;
-         
-                q = "INSERT INTO A_NEW_PKG_GROUP_DESC(PKG_GROUP_DESC) VALUES ('" + PKG_GROUP_DESC + "')";
+
+                q = "INSERT INTO A_NEW_PKG_GROUP_DESC(PKG_GROUP_SK,PKG_GROUP_DESC) VALUES (a_new_action_history_seq.nextval ,'" + PKG_GROUP_DESC + "')";
 
             }else
             {

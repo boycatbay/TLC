@@ -10,34 +10,25 @@
 namespace Toollife {
     
     
-    public partial class TOOL_SET {
+    public partial class conversion {
         
         /// <summary>
-        /// tsData control.
+        /// unicorn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tsData;
+        protected global::System.Web.UI.WebControls.GridView unicorn;
         
         /// <summary>
-        /// addPkgC control.
+        /// selectPS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl addPkgC;
-        
-        /// <summary>
-        /// tIDIN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tIDIN;
+        protected global::System.Web.UI.WebControls.DropDownList selectPS;
         
         /// <summary>
         /// selectPG control.
@@ -58,39 +49,66 @@ namespace Toollife {
         protected global::System.Web.UI.WebControls.ListBox selectPC;
         
         /// <summary>
-        /// substIn control.
+        /// unipesi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox substIn;
+        protected global::System.Web.UI.WebControls.TextBox unipesi;
         
         /// <summary>
-        /// adEdBut control.
+        /// unipetu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl adEdBut;
+        protected global::System.Web.UI.WebControls.TextBox unipetu;
         
         /// <summary>
-        /// add control.
+        /// unipeta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add;
+        protected global::System.Web.UI.WebControls.TextBox unipeta;
         
         /// <summary>
-        /// edit control.
+        /// unipehi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button edit;
+        protected global::System.Web.UI.WebControls.TextBox unipehi;
+        
+        /// <summary>
+        /// multi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox multi;
+        
+        /// <summary>
+        /// editButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button editButton;
+        
+        /// <summary>
+        /// addButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addButton;
     }
 }

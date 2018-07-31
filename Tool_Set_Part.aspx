@@ -16,7 +16,8 @@
                 BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
                 CellPadding="3" GridLines="Vertical" 
                 DataKeyNames="PKG_CODE,TOOL_SK,TOOL_ID" 
-                onpageindexchanging="partNO_PageIndexChanging" onrowcommand="tsData_RowCommand">
+                onpageindexchanging="partNO_PageIndexChanging" 
+                onrowcommand="tsData_RowCommand" Font-Bold="True" >
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="TOOL_ID" HeaderText="Tool ID" SortExpression="TOOL_ID" />
@@ -45,9 +46,10 @@
                 <asp:GridView ID="partNO" runat="server" AllowPaging="True" AutoGenerateColumns="False"
                     BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
                     CellPadding="3" GridLines="Vertical" DataKeyNames="PART_NO,PART_DESC" 
-                    onpageindexchanging="partNO_PageIndexChanging" >
+                    onpageindexchanging="partNO_PageIndexChanging" Font-Bold="True" >
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
+                        <asp:BoundField DataField="PKG_CODE" HeaderText="PKG" SortExpression="PART_CODE" />
                         <asp:BoundField DataField="PART_NO" HeaderText="Part NO." SortExpression="PART_NO" />
                         <asp:BoundField DataField="PART_DESC" HeaderText="Discription" SortExpression="PART_DESC" />
                         <asp:TemplateField HeaderText="Select">
@@ -78,7 +80,7 @@
             <div id="addPartSet" runat="server">
                 <h2 align="center">
                     Add/Edit</h2>
-                <div class="row">
+                <div class="row"><b>
                     <div class="col-25">
                         Tool ID
                     </div>
@@ -104,7 +106,7 @@
                         
                         <br />
                     </div>
-                </div>
+                </div></b>
                 <div class="row" id="adEdBut" runat="server">
                     <asp:Button ID="add" runat="server" Text="SAVE" Width="180px" 
                         onclick="add_Click" />

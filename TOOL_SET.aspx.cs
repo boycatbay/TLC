@@ -13,7 +13,8 @@ namespace Toollife
 {
     public partial class TOOL_SET : System.Web.UI.Page
     {
-        String TOOL_SK, TOOL_ID, PKG_CODE, STATUS, pkgGp;
+        String TOOL_SK,TOOL_ID, PKG_CODE, STATUS, pkgGp;
+        static string toolskin;
         DBA con = new DBA();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,11 +26,10 @@ namespace Toollife
             }
             add.Visible = true;
             edit.Visible = false;
-            statusFF.Visible = false;
         }
         protected void getTSINFO()
         {
-            String q = "SELECT TS.TOOL_SK,TS.TOOL_ID,PC.PKG_GROUP_SK,TS.PKG_CODE,TS.STATUS_FLAG FROM A_NEW_TOOL_SET TS LEFT JOIN A_NEW_PKG_CODE PC ON TS.PKG_CODE = PC.PKG_CODE ORDER BY TOOL_ID ASC";
+            String q = "SELECT TS.TOOL_SK,TS.TOOL_ID,PC.PKG_GROUP_SK,TS.PKG_CODE,TS.STATUS_FLAG,TS.SUBSTRATEPART FROM A_NEW_TOOL_SET TS LEFT JOIN A_NEW_PKG_CODE PC ON TS.PKG_CODE = PC.PKG_CODE ORDER BY TOOL_ID ASC";
             DataSet ds = con.getData(q);
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -101,9 +101,8 @@ namespace Toollife
 
             this.TOOL_ID = tIDIN.Text;
             this.PKG_CODE = selectPC.SelectedValue;
-            this.STATUS = "Active";
-
-            q = "INSERT INTO A_NEW_TOOL_SET(TOOL_ID,PKG_CODE,STATUS_FLAG) VALUES ('" + TOOL_ID + "','" + PKG_CODE + "','" + STATUS + "')";
+            String subst = substIn.Text;
+            q = "INSERT INTO A_NEW_TOOL_SET(TOOL_SK,TOOL_ID,PKG_CODE,SUBSTRATEPART) VALUES (A_NEW_TOOL_SET_SEQ.nextval,'" + TOOL_ID + "','" + PKG_CODE + "','"+subst+"')";
 
             mes = con.querytoDB(q);
             getTSINFO();
@@ -123,31 +122,25 @@ namespace Toollife
                 tIDIN.Text = tsData.DataKeys[index].Values["TOOL_ID"].ToString();
                 selectPG.SelectedValue = tsData.DataKeys[index].Values["PKG_GROUP_SK"].ToString();
                 pkgCoSelect(tsData.DataKeys[index].Values["PKG_GROUP_SK"].ToString());
-                statusF.Text = tsData.DataKeys[index].Values["STATUS_FLAG"].ToString();
                 selectPC.SelectedValue = tsData.DataKeys[index].Values["PKG_CODE"].ToString();
-                toolskin.Text = tsData.DataKeys[index].Values["TOOL_SK"].ToString();    
+                toolskin = tsData.DataKeys[index].Values["TOOL_SK"].ToString();
+                substIn.Text = tsData.DataKeys[index].Values["SUBSTRATEPART"].ToString();
                 add.Visible = false;
                 edit.Visible = true;
-                statusFF.Visible = true;
-              
-
+                
             }
-
-
 
         }
         protected void edit_onclick(object sender, EventArgs e) 
         {
             String q,mes;
-            this.TOOL_SK = toolskin.Text;
+            this.TOOL_SK = toolskin;
             this.TOOL_ID = tIDIN.Text;
             this.PKG_CODE = selectPC.SelectedValue;
-            this.STATUS = statusF.Text;
-
-            q = "UPDATE A_NEW_TOOL_SET SET TOOL_ID='" + TOOL_ID + "',PKG_CODE='" + PKG_CODE + "',STATUS_FLAG='" + STATUS + "' WHERE TOOL_SK = " + TOOL_SK + "";
+            String subst = substIn.Text;
+            q = "UPDATE A_NEW_TOOL_SET ST TOOL_ID='" + TOOL_ID + "',PKG_CODE='" + PKG_CODE + "',SUBSTRATEPART='"+subst+"' WHERE TOOL_SK = " + TOOL_SK + "";
             mes = con.querytoDB(q);
             getTSINFO();
-            statusFF.Visible = false;
             tIDIN.Text = String.Empty;
             selectPG.ClearSelection();
             selectPC.Items.Clear();

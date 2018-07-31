@@ -14,7 +14,8 @@
                 BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
                 CellPadding="3" GridLines="Vertical" 
                 DataKeyNames="PKG_GROUP_SK,PKG_CODE,PKG_GROUP_DESC" 
-                onpageindexchanging="pkgData_PageIndexChanging" onrowcommand="pkgData_RowCommand"
+                onpageindexchanging="pkgData_PageIndexChanging" 
+                onrowcommand="pkgData_RowCommand" Font-Bold="True"
                 
                 >
                 <AlternatingRowStyle BackColor="#DCDCDC" />
@@ -40,18 +41,18 @@
         <br />
         <div id="select">
             <h2 align="center">
-                Choose the action</h2>
+                Choose the action</h2><b>
                 <asp:RadioButtonList ID="selectAct" runat="server" align="center" 
                 AutoPostBack="True" onselectedindexchanged="selectAct_SelectedIndexChanged">
                     <asp:ListItem Text="Add/Edit Package Group" Value= "0" ></asp:ListItem>
                     <asp:ListItem Text="Add/Edit Package Code" Value="1"></asp:ListItem>
-                </asp:RadioButtonList>
+                </asp:RadioButtonList></b>
               
         </div>
         <br />
         <br />
         <div id="addPKG">
-            <asp:MultiView ID="MultiView1" runat="server">
+            <asp:MultiView ID="MultiView1" runat="server"><b>
                 <asp:View ID="View1" runat="server">
                     <div id="addPkgC" runat="server">
                         <h3 align="center">
@@ -91,7 +92,7 @@
                             <asp:TextBox ID="pkgSK" runat="server" Visible="False"></asp:TextBox>
                         </div>
                         </div>
-                </asp:View>
+                </asp:View></b>
             </asp:MultiView>
             <div class="row" id="adEdBut" runat="server">
                 <asp:Button ID="add" runat="server" Text="SAVE" Width="180px" onclick="add_Click" 
